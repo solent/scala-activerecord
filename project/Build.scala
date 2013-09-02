@@ -18,7 +18,7 @@ object ActiveRecordBuild extends Build {
 
   val defaultSettings = Defaults.defaultSettings ++ Seq(
     version := (if (isRelease) _version else _version + "-SNAPSHOT"),
-    organization := "com.github.aselab",
+    organization := "com.github.solent",
     scalaVersion := "2.10.2",
     crossScalaVersions := Seq("2.10.2", "2.9.2"),
     resolvers ++= defaultResolvers,
