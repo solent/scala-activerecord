@@ -25,10 +25,15 @@ object TestTables extends ActiveRecordTables with VersionTable {
   val datestamps = table[DatestampsModel]
   val optimistics = table[OptimisticModel]
 
+  val prefixedRecords = table[PrefixedTestRecord]("records", "prefixed")
+
   def createTestData = PrimitiveModel.forceInsertAll(
     (1 to 100).map { i => PrimitiveModel.newModel(i, i > 50) }
   )
 }
+
+case class PrefixedTestRecord(name: String) extends ActiveRecord;
+object PrefixedTestRecord extends ActiveRecordCompanion[PrefixedTestRecord]
 
 case class User(name: String, isAdmin: Boolean = false) extends ActiveRecord {
   val groupId: Option[Long] = None

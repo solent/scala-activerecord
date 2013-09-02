@@ -67,4 +67,13 @@ object ActiveRecordTablesSpec extends DatabaseSpecification {
     }
 
   }
+
+  "initialization" should {
+    "be idempotent" >> {
+      def init() = TestTables.initialize(Map("schema" -> "com.github.aselab.activerecord.models.TestTables"))
+      init()
+      init()
+      success
+    }
+  }
 }
